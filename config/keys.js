@@ -1,5 +1,5 @@
 module.exports = {
-	mongoURI: 'mongodb://Admin:1234567890@ds241065.mlab.com:41065/stroybooks-dev',
-	googleClientID: '961173837111-ksr3gdbrhhkksg8af9js8amq7b51vjs0.apps.googleusercontent.com',
-	googleClientSecret: 'W28VkHmkdX3YBu7K0zi5cpoU'
-};
+  mongoURI:'mongodb://Admin:1234567890@ds241065.mlab.com:41065/stroybooks-dev',
+  googleClientID:'57835908856-q8m8ql9als7ee3fljrjumd477r5bjukt.apps.googleusercontent.com',
+  googleClientSecret:'OWPjmzPKmledIkj4DUr7xl60'
+}
