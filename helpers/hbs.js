@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = {
 	truncate: (str, len) => {
 		if (str.length > len && str.length > 0) {
@@ -11,5 +13,11 @@ module.exports = {
 	},
 	strip_tags: (input) => {
 		return input.replace(/<(?:.|\n)*?>/gm, '');
+	},
+	formatDate: (date, format) => {
+		return moment(date).format(format);
+	},
+	select: (selected, options) => {
+		return options.fn(this).replace( new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"').replace( new RegExp('>' + selected + '</option>'), ' selected="selected"$&');
 	}
 }
