@@ -7,3 +7,17 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.nav-wrapper .fa-bars {
+	font-size: 23px;
+}
+
+footer {
+	margin-top: 20px;
+}
+
+textarea {
+	height: 80px;
+	border-bottom: 1px solid #9E9E9E;
+	outline: none;
+}
