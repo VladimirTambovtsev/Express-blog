@@ -25,7 +25,7 @@ const stories = require('./routes/stories');
 const keys = require('./config/keys');
 
 // Handlebars helpers
-const { truncate, strip_tags, formatDate, select } = require('./helpers/hbs');
+const { truncate, strip_tags, formatDate, select, editIcon } = require('./helpers/hbs');
 
 // Map global promises
 mongoose.Promise = global.Promise;
@@ -51,7 +51,8 @@ app.engine('handlebars', exphbs({
     truncate,
     strip_tags,
     formatDate,
-    select
+    select,
+    editIcon
   },
   defaultLayout:'main'
 }));

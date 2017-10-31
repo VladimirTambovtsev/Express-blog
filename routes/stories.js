@@ -9,6 +9,7 @@ const User = mongoose.model('users');
 router.get('/', (req, res) => {
   Story.find({status: 'public'})
   		.populate('user')
+  		.sort({date: 'desc'})
   		.then(stories => {
   			 res.render('stories/index', {
   			 	stories
@@ -31,20 +32,47 @@ router.get('/show/:id', (req, res) => {
 	});
 });
 
+// List stories from a user
+router.get('/user/:userId', (req, res) => {
+	Story.find({user: req.params.userId, status: 'public'})
+			.populate('user')
+			.then(stories => {
+				res.render('stories/index', {
+					stories
+				});
+			})
+});
+
+// Logged in users stories
+router.get('/my', ensureAuthenticated, (req, res) => {
+	Story.find({user: req.user.id})
+			.populate('user')
+			.then(stories => {
+				res.render('stories/index', {
+					stories
+				});
+			})
+});
+
+
 // Add Story Form
 router.get('/add', ensureAuthenticated, (req, res) => {
   res.render('stories/add');
 });
 
-// Add Story Form
+// Edit Story Form
 router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 	Story.findOne({
 		_id: req.params.id
 	})
 	.then(story => {
-		res.render('stories/edit', {
-			story
-		});
+		if (story.user !== req.user.id) {
+			res.redirect('/stories');
+		} else {
+			res.render('stories/edit', {
+				story
+			});
+		}
 	});
 });
 
